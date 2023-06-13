@@ -1,0 +1,1 @@
+export const cursos = ["html","nodejs","sql","mongo"];
