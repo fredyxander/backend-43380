@@ -11,7 +11,7 @@ const app = express();
 app.listen(port,()=>console.log(`El servidor esta escuchando en el puerto ${port}`));
 
 //crear la instancia de la clase
-const productService = new ProductManager("./products.json");
+const productService = new ProductManager("./src/products.json");
 
 //arreglo de usuarios
 const users = [
