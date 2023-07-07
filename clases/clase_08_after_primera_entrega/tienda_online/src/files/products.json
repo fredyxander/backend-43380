@@ -1,0 +1,14 @@
+[
+	{
+		"id": "d070afa8-63d9-478c-b388-98178830caac",
+		"title": "pelota",
+		"description": "pelota de playa",
+		"price": 200
+	},
+	{
+		"id": "4b3d41e8-d374-4569-b30f-13f91bc7edb2",
+		"title": "salvavidas",
+		"description": "salvavidas niño",
+		"price": 1000
+	}
+]
