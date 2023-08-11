@@ -1,0 +1,29 @@
+<p style="color:red"><strong>{{error}}</strong></p>
+
+{{#if payload}}
+    <h1>Listado de Productos</h1>
+    <ul>
+    {{#each payload}}
+        <li>Nombre: {{this.title}}  Precio: {{this.price}}</li>
+        <button onclick="addToCart('{{this._id}}')">Agregar al carrito</button>
+    {{/each}}
+    </ul>
+
+    {{#if hasPrevPage}}
+        <a href={{prevLink}}>Anterior</a>
+    {{/if}}
+
+    {{page}}
+
+    {{#if hasNextPage}}
+        <a href={{nextLink}}>Siguiente</a>
+    {{/if}}
+{{else}}
+    <h2>No hay productos</h2>
+{{/if}}
+
+<script>
+    const addToCart = (productId)=>{
+        console.log(`producto recibido ${productId}`);
+    }
+</script>
