@@ -1,0 +1,11 @@
+<h1>Formulario de login</h1>
+<p>{{message}}</p>
+<p style="color:red">{{error}}</p>
+
+<form method="post" action="/api/sessions/login">
+    <input type="email" placeholder="correo" name="email"/>
+    <br/><br/>
+    <input type="password" placeholder="contraseña" name="password"/>
+    <br/><br/>
+    <button>Loguearse</button>
+</form>
