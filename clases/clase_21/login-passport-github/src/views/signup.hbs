@@ -1,0 +1,23 @@
+<h1>Formulario de registro</h1>
+<p style="color:red">{{error}}</p>
+
+<form method="post" action="/api/sessions/signup">
+    <input type="text" placeholder="nombre" name="first_name"/>
+    <br/><br/>
+    <input type="email" placeholder="correo" name="email"/>
+    <br/><br/>
+    <input type="password" placeholder="contraseña" name="password"/>
+    <br/><br/>
+    <button>Registrarse</button>
+</form>
+<hr>
+<a href="/cambio-password">
+    Restaurar contraseña
+</a>
+
+<hr>
+<a href="/api/sessions/loginGithub">
+    <button>
+        Iniciar sesión con github
+    </button>
+</a>
