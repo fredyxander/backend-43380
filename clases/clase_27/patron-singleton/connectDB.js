@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 export class MongoSingleton{
     static #instance;
     constructor(){
-        mongoose.connect("mongodb+srv://fredy:coder@coderbackend.d0kaklh.mongodb.net/singletonDB?retryWrites=true&w=majority");
+        mongoose.connect("MONGO URL");
         console.log("base de datos conectada correctamente");
     };
 
