@@ -30,6 +30,7 @@ export class UsersMongo{
 
     async getByEmail(userEmail){
         try {
+            console.log(userEmail)
             const user = await this.model.findOne({email:userEmail}).lean();
             if(user){
                 return user;

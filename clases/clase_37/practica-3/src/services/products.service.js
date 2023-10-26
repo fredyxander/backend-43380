@@ -13,4 +13,8 @@ export class ProductsService{
     static createProduct = async(productInfo)=>{
         return await productsDao.save(productInfo);
     };
+
+    static deleteProduct = async(productId)=>{
+        return await productsDao.delete(productId);
+    };
 }

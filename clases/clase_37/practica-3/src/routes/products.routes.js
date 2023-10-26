@@ -7,8 +7,8 @@ const router = Router();
 
 router.get("/", ProductsController.getProducts);
 router.get("/:pid", ProductsController.getProduct);
-router.post("/", checkAuthenticated, checkRole(["admin", "superadmin"]), ProductsController.createProduct);
+router.post("/", checkAuthenticated, checkRole(["admin", "superadmin","premium"]), ProductsController.createProduct);
 router.put("/:pid", checkAuthenticated, checkRole(["admin"]), ProductsController.updateProduct);
-router.delete("/:pid", checkAuthenticated, checkRole(["admin"]), ProductsController.deletProduct);
+router.delete("/:pid", checkAuthenticated, checkRole(["admin","premium"]), ProductsController.deletProduct);
 
 export {router as productsRouter}

@@ -40,4 +40,19 @@ export class ProductsMongo{
             throw new Error("Hubo un error al crear el producto");
         }
     };
+
+    //delete product
+    async delete(productId){
+        try{
+            const result = await this.model.findByIdAndDelete(productId);
+            if(!result){
+                throw new Error("No existe este producto");
+            }
+            return result;
+        }catch(error){
+            console.log(error.message);
+            // throw error
+            throw new Error("Hubo un error al eliminar el producto");
+        }
+    };
 }

@@ -22,6 +22,7 @@ export class ProductsController{
         //Agregar el producto
         try {
             const productInfo = req.body;
+            productInfo.owner = req.user._id;
             const productCreated = await ProductsService.createProduct(productInfo);
             res.json({status:"success", data:productCreated, message:"producto creado"});
         } catch (error) {
@@ -35,6 +36,20 @@ export class ProductsController{
     };
 
     static deletProduct = async(req,res)=>{
-        res.json({status:"success", message:"producto eliminado"});
+        try {
+            const productId = req.params.pid;
+            const product = await ProductsService.getProduct(productId);
+            //validar que el usuario que esta intentando borrar el producto
+            //Si es premium y es el creador del producto
+            //Si es usuario administrador
+            if((req.user.role === "premium" && product.owner.toString() === req.user._id.toString()) || req.user.role === "admin"){
+                await ProductsService.deleteProduct(productId);
+                return res.json({status:"success", message:"producto eliminado"});
+            } else {
+                return res.json({status:"error", message:"no tienes permisos"});
+            }
+        } catch (error) {
+            res.json({status:"error", message:error.message});
+        }
     };
 }
