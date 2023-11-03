@@ -1,0 +1,64 @@
+paths:
+  /api/products:
+    post:
+      summary: Ruta para crear un producto
+      tags:
+        - Products
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/requestBodies/CreateProduct"
+      responses:
+        "200":
+          description: El producto se creo de forma correcta
+          content:
+            application/json:
+              schema:
+                $ref: "#components/schemas/CreateProductSuccess"
+        "500":
+          description: Hubo un error en el servidor
+
+components:
+  requestBodies:
+    CreateProduct:
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          type: number
+        code:
+          type: string
+        category:
+          type: string
+        stock:
+          type: number
+      example:
+        name: "Pelota de playa"
+        price: 200
+        code: "Codigo 89"
+        category: "Deportes"
+        stock: 100
+  schemas:
+    CreateProductSuccess:
+      type: object
+      properties:
+        status:
+          type: string
+        data:
+          type: object
+          properties:
+            _id:
+              type: ObjectId
+            name:
+              type: string
+        message:
+          type: string
+      example:
+        status: "success"
+        data:
+          _id: ObjectId(jshd81928127638)
+          name: "Pelota de playa"
+        message: "producto creado"
