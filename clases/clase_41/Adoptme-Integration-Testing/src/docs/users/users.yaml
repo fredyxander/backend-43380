@@ -1,0 +1,132 @@
+paths:
+  /api/users:
+    get:
+      summary: Endpoint para obtener todos los usuarios
+      tags:
+        - Usuarios
+      responses:
+        "200":
+          description: Se obtuvieron correctamente los usuarios
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/User'
+        "401":
+          description: No tienes permisos para acceder a esta ruta
+        "500":
+          description: Se produjo un error en el servidor
+  /api/users/{uid}:
+    get:
+      summary: Endpoint para obtener informacion de un usuario
+      tags:
+        - Usuarios
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: id del usuario
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Se obtuvo correctamente el usuario
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/User'
+        "401":
+          description: No tienes permisos para acceder a esta ruta
+        "500":
+          description: Se produjo un error en el servidor
+    put:
+      summary: Endpoint para actualizar un usuario
+      tags:
+        - Usuarios
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          description: id del usuario a actualizar
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/requestBodies/UpdateUser"
+      responses:
+        "200":
+          description: Se actualizo correctamente el usuario
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  message:
+                    type: string
+        "401":
+          description: No tienes permisos para acceder a esta ruta
+        "500":
+          description: Se produjo un error en el servidor
+
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: ObjectId
+          description: id del usuario generado por mongoDB
+        first_name:
+          type: string
+          description: Nombre del usuario
+        last_name:
+          type: string
+          description: Apellido del usuario
+        email:
+          type: string
+          description: Correo del usuario
+        password:
+          type: string
+          description: contraseña con hash
+        role:
+          type: string
+          description: role del usuario
+        pets:
+          type: array
+          description: Mascotas del usuario
+      example:
+        _id: kasghd91826asdsjsa812
+        first_name: pepe
+        last_name: perez
+        email: pepe@gmail.com
+        password: $skdfjh91823akjsd91283
+        role: user
+        pets: []
+  requestBodies:
+    UpdateUser:
+      type: object
+      properties:
+        first_name:
+          type: string
+          description: Nombre del usuario
+        last_name:
+          type: string
+          description: Apellido del usuario
+        email:
+          type: string
+          description: Correo del usuario
+        password:
+          type: string
+          description: contraseña con hash
+      example:
+        first_name: pepe
+        last_name: perez
+        email: pepe@gmail.com
+        password: $skdfjh91823akjsd91283
