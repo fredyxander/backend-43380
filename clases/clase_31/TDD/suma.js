@@ -3,12 +3,7 @@ let testPasados=0;
 let totalTest=4;
 
 //A) Crear la funcion sumar
-const sumar = (...nums)=>{
-    // console.log(nums);
-    if(nums.length === 0) return 0;
-    if(nums.some(num=>typeof num !=="number")) return null;
-    return nums.reduce((acc,i)=>acc+=i,0);
-};
+const sumar = (...nums)=>{};
 // sumar(1,2,3,4,5,6);
 
 //B) Crear escenarios (Pruebas)
